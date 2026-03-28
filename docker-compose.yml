@@ -23,7 +23,7 @@ services:
       - static:/backend_static
       - media:/app/media/
     expose:
-      - 80
+      - 8000
 
   frontend:
     container_name: studygram-front

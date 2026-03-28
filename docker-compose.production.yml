@@ -14,8 +14,8 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    container_name: foodgram-back
-    image: kika374/foodgram_backend
+    container_name: studygram-back
+    build: /backend
     env_file: .env
     depends_on:
       - db
@@ -26,17 +26,17 @@ services:
       - 8000
 
   frontend:
-    container_name: foodgram-front
-    image: kika374/foodgram_frontend
+    container_name: studygram-front
+    build: /frontend
     env_file: .env
     volumes:
       - static:/app/build/
 
   nginx:
-    container_name: foodgram-proxy
-    image: kika374/foodgram_nginx
+    container_name: studygram-proxy
+    build: ./nginx/
     ports:
-      - 8000:80
+      - 80:80
     depends_on:
       - backend
       - frontend
